@@ -11,6 +11,8 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["dockerSupport.csproj", "."]
+# Line 15 has issue otjer wise build succeeded
+# COPY ["./RepoLayer\RepoLayer.csproj", "."] 
 RUN dotnet restore "./dockerSupport.csproj"
 COPY . .
 WORKDIR "/src/."
